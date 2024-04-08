@@ -361,9 +361,10 @@ int num1()
     {
         puts("There are no students with average grade > 4.0");
     }
+    printf("\n");
 }
 
-int num1_txtOut()
+int num1_txtOut()//считывает структуру из файла
 {
     typedef struct
     {
@@ -410,9 +411,10 @@ int num1_txtOut()
     {
         puts("There are no students with average grade > 4.0");
     }
+    printf("\n");
 }
 
-int num1_txtIn()
+int num1_txtIn()//записывает с клавиатуры в файл
 {
     typedef struct
     {
@@ -480,6 +482,7 @@ int num1_txtIn()
     {
         puts("There are no students with average grade > 4.0");
     }
+    printf("\n");
 }
 
 //number 2
@@ -537,6 +540,7 @@ int num2()
     {
         puts("There are no students that have only 4 and 5 grades");
     }
+    printf("\n");
 }
 
 //number 3
@@ -590,6 +594,7 @@ int num3()
     {
         puts("There are no students that have at least one F grade (2)");
     }
+    printf("\n");
 }
 
 //numbers 4-5
@@ -601,7 +606,7 @@ typedef struct
     char airplane[20];
 } AEROFLOT;
 
-#define FLIGHT 7
+#define FLIGHT 4
 
 //number 4
 int num4()
@@ -622,7 +627,7 @@ int num4()
         scanf("%s", &Flight[i].airplane);
     }
 
-    puts("Enter destination to find available flights: ");
+    puts("\nEnter destination to find available flights: ");
     scanf("%s", &ur_fl_d);
 
     for (int i = 0; i < FLIGHT; i++)
@@ -645,10 +650,63 @@ int num4()
     {
         puts("There are no flights..");
     }
+    printf("\n");
 }
 
 //number 5
 int num5()
 {
+    AEROFLOT Flight[FLIGHT];
+    char ur_type[30];
+    int temp;
+    int k = 0;
 
+    for (int i = 0; i < FLIGHT; i++)
+    {
+        puts("\nEnter flight destination: ");
+        scanf("%s", &Flight[i].destination);
+
+        puts("Enter flight number: ");
+        scanf("%ld", &Flight[i].number);
+
+        puts("Enter type of airplane: ");
+        scanf("%s", &Flight[i].airplane);
+    }
+
+    puts("Enter type of airplane to find available flights: ");
+    scanf("%s", &ur_type);
+
+    for (int i = 0; i < FLIGHT; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (strcmp(Flight[j].destination, Flight[i].destination) > 0)
+            {
+                AEROFLOT temp = Flight[j];
+                Flight[j] = Flight[i];
+                Flight[i] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < FLIGHT; i++)
+    {
+        char* f1 = Flight[i].airplane;
+        char* f2 = ur_type;
+
+        if (strcmp(f1, f2) == 0)
+        {
+            puts("\nflight number: ");
+            printf("%d", Flight[i].number);
+
+            puts("\nflight destination: ");
+            printf("%s", Flight[i].destination);
+
+            k++;
+        }
+    }
+    if (k == 0)
+    {
+        puts("There are no flights..");
+    }
+    printf("\n");
 }
