@@ -1,0 +1,5 @@
+Ivanov 34 3 3 4 5 5 
+Smirnov 34 4 4 5 4 4 
+Kozlova 34 5 5 3 4 5 
+Petrov 35 4 3 5 5 5 
+Krasnova 35 2 4 3 5 5 
