@@ -673,7 +673,7 @@ int num5()
         scanf("%s", &Flight[i].airplane);
     }
 
-    puts("Enter type of airplane to find available flights: ");
+    puts("\nEnter type of airplane to find available flights: ");
     scanf("%s", &ur_type);
 
     for (int i = 0; i < FLIGHT; i++)
