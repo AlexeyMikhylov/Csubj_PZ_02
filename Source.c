@@ -316,7 +316,7 @@ int num1()
         unsigned int grade[5];
     } STUDENT;
 
-    int k = 0;
+    int cnt = 0;
 
     STUDENT p[students];
 
@@ -354,10 +354,10 @@ int num1()
         {
             printf("\nSurname: %s \n", p[i].surname);
             printf("Group: %ld \n", p[i].group);
-            k++;
+            cnt++;
         }
     }
-    if (k == 0)
+    if (cnt == 0)
     {
         puts("There are no students with average grade > 4.0");
     }
