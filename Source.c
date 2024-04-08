@@ -598,7 +598,6 @@ int num3()
 }
 
 //numbers 4-5
-
 typedef struct
 {
     char destination[30];
