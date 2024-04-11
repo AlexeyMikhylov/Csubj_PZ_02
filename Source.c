@@ -305,7 +305,7 @@ int ex6()
 }
 
 //number 1
-#define students 5
+#define students 3
 
 int num1()
 {
@@ -352,8 +352,8 @@ int num1()
 
         if (average_grade > 4.0)
         {
-            printf("\nSurname: %s \n", p[i].surname);
-            printf("Group: %ld \n", p[i].group);
+            printf("\n Surname: %s \n", p[i].surname);
+            printf("      Group: %ld \n", p[i].group);
             k++;
         }
     }
@@ -401,9 +401,9 @@ int num1_txtOut()//считывает структуру из файла
 
         if (average_grade > 4.0)
         {
-            printf("\nSurname: %s \n", p[i].surname);
-            printf("Group: %ld \n", p[i].group);
-            printf("Average grade: %.2lf \n", average_grade);
+            printf("\n   Surname: %s \n", p[i].surname);
+            printf("     Group: %ld \n", p[i].group);
+            printf(" Avg grade: %.2lf \n", average_grade);
             k++;
         }
     }
@@ -472,9 +472,9 @@ int num1_txtIn()//записывает с клавиатуры в файл
 
         if (average_grade > 4.0)
         {
-            printf("\nSurname: %s \n", p[i].surname);
-            printf("Group: %ld \n", p[i].group);
-            printf("Average grade: %.2lf \n", average_grade);
+            printf("\n  Surname: %s \n", p[i].surname);
+            printf("     Group: %ld \n", p[i].group);
+            printf(" Avg grade: %.2lf \n", average_grade);
             k++;
         }
     }
@@ -488,7 +488,7 @@ int num1_txtIn()//записывает с клавиатуры в файл
 //number 2
 int num2()
 {
-    typedef struct
+    /*typedef struct
     {
         char surname[20];
         int group;
@@ -497,7 +497,7 @@ int num2()
 
     int k = 0;
     
-    STUDENT p[10];
+    STUDENT p[students];
     
     for (int i = 0; i < students; i++)
     {
@@ -522,7 +522,7 @@ int num2()
         {
             if (p[i].grade[j] == 4 || p[i].grade[j] == 5)
             {
-                marks == 0;
+                marks = 0;
             }
             else
             {
@@ -540,7 +540,54 @@ int num2()
     {
         puts("There are no students that have only 4 and 5 grades");
     }
-    printf("\n");
+    printf("\n");*/
+
+    typedef struct
+    {
+        char surname[10];
+        int group;
+        int grade[5];
+    } STUDENT;
+    int k = 0;
+    STUDENT p[10];
+    for (int i = 0; i < students; i++)
+    {
+        puts("\nEnter your surname: ");
+        scanf("%s", &p[i].surname);
+        puts("Enter your group: ");
+        scanf("%ld", &p[i].group);
+        puts("Enter your grade (1..5): ");
+        for (int j = 0; j < 5; j++)
+        {
+            scanf("%ld", &p[i].grade[j]);
+        }
+    }
+    puts("\nStudents with 4 and 5: ");
+    for (int i = 0; i < students; i++)
+    {
+        float marks = 0;
+        for (int j = 0; j < 5; j++)
+        {
+            if (p[i].grade[j] == 4 || p[i].grade[j] == 5)
+            {
+                if (p[i].grade[j] + p[i].grade[j + 1] + p[i].grade[j + 2] + p[i].grade[j + 3] + p[i].grade[j + 4] != 25 && p[i].grade[j] + p[i].grade[j + 1] + p[i].grade[j + 2] + p[i].grade[j + 3] + p[i].grade[j + 4] != 20)
+                {
+                    marks++;
+                }
+            }
+
+        }
+        if (marks == 5)
+        {
+            printf("\nSurname: %s \n", p[i].surname);
+            printf("Group: %ld \n", p[i].group);
+            k++;
+        }
+    }
+    if (k == 0)
+    {
+        puts("There are no students with 4 and 5");
+    }
 }
 
 //number 3
